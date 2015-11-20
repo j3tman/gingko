@@ -1,6 +1,5 @@
 (function() {
   'use strict';
-
   angular.module('app')
   .controller('SearchCtrl', SearchCtrl);
 
@@ -10,6 +9,10 @@
     // TODO: Please verify that this matches the refactored style
 
     var self = this;
+    //date initialization
+    self.date = new Date();
+    self.minDate = new Date(self.date.getFullYear(), self.date.getMonth(), self.date.getDate());
+
     // below are settings for the md-autocomplete directive
     self.simulateQuery = false;
     self.isDisabled = false;
