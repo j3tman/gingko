@@ -1,0 +1,47 @@
+.md-input {
+
+  margin: 0;
+}
+
+* {
+    font-weight: 500;
+}
+
+md-datepicker {
+  height: 50px;
+  margin: 0 10px 8px 0;
+  padding: 0;
+}         
+#time-input {
+  height: 50px;
+  margin:  17px 0 5px 0;
+  line-height: 15px;
+  /*margin-bottom: -15px ;*/
+  /*padding: 8px;*/
+  font-weight: 100;
+}
+
+input[type="time"] {
+  /*vertical-align: sub;*/
+
+
+}
+
+/*#wat{
+  vertical-align: baseline;
+  background-color: red;
+}*/
+
+#num-attendees {
+  margin-top: 19px;
+}
+
+/*
+label {
+  font-weight: 500;
+  color: rgba(0,0,0,0.87);  
+}
+*/
+aria-label {
+
+}

@@ -1,3 +1,4 @@
+<link rel='stylesheet' href="../../styles/search.css" />
 <div id="search">
   <div ng-controller="SearchCtrl as vm" layout="column" ng-cloak class="md-inline-form">
     <md-content layout-padding layout="column">
@@ -5,7 +6,7 @@
         <md-card class="search-card">
           <!-- user event details start -->
             <md-input-container flex>
-              <label>Your TableSurfers Event Name</label>
+              <label>Your Table Name</label>
               <textarea ng-model="vm.meal.title" columns="1" rows="1"></textarea>
             </md-input-container>
 
@@ -18,8 +19,8 @@
                 md-min-length="1"
                 md-floating-label="Where do you want to eat? Search Yelp."
                 md-menu-class="autocomplete-search">
-              <span md-highlight-text="vm.searchText">{{item.name}}</span>
               <!-- autocomplete display start -->
+              <span  ng-if="item.name" md-highlight-text="vm.searchText">{{item.name}}</span>
               <md-item-template>
                 <span class="item-name">
                   <span><strong> {{item.name}} </strong></span>
@@ -38,31 +39,36 @@
             <!-- md autocomplete settings end -->
 
             <!-- md-datepicker, span required to prevent rolling off edge -->
-            <span>
-              <md-datepicker
+            <!-- <span> -->
+            <div layout="row" flex>
+              <md-datepicker flex="30"
                 ng-model="vm.meal.date"
                 ng-required="true"
                 md-min-date="vm.minDate"
                 md-placeholder="Enter Date"
                 aria-haspopup="true">
               </md-datepicker>
-            </span>
-
+            <!-- </span> -->
             <!-- time input -->
-            <md-input-container flex>
-              <input type="time" ng-model="vm.meal.time" placeholder="What time do you want to host?">
-            </md-input-container>
-
+              <md-input-container class="md-input" id="time-input" flex="40">
+                <input type="time" ng-model="vm.meal.time" placeholder="Enter Time">
+              </md-input-container>
             <!-- num of attendess -->
-            <md-select ng-model="vm.meal.attendees" placeholder="How many other Surfers can join?">
-              <md-option ng-value="number" ng-repeat="number in vm.attendees">{{ number }}</md-option>
-            </md-select>
+              <md-select id="num-attendees" flex="30" ng-model="vm.meal.attendees" placeholder="Num. of Surfers">
+                <md-option ng-value="number" ng-repeat="number in vm.attendees">{{ number }}</md-option>
+              </md-select>
+            </div>
+  <!--           <div flex="30" ng-init="changeValue = 5">
+            <input type="text" ng-model="commonDatepicker" class="form-control" data-nq-datepicker="" placeholder="datepicker">
+            </div> -->
+
 
 
             <!-- event desc. -->
-            <md-input-container flex>
-              <label>Please describe your TS meal:</label>
-              <textarea ng-model="vm.meal.description" columns="1" md-maxlength="300" rows="5"></textarea>
+            <!-- <md-divider></md-divider> -->
+            <md-input-container>
+              <label>Event Info</label>
+              <textarea style="resize:none" ng-model="vm.meal.description" columns="10" md-maxlength="300" rows="10"></textarea>
             </md-input-container>
 
           <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
