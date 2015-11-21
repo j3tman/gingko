@@ -25,10 +25,17 @@
                 <span class="item-name">
                   <span><strong> {{item.name}} </strong></span>
                 </span>
-                <span class="item-metadata">
+<!--                 <span class="item-metadata">
                   <span class="item-metastat">
                     <span>phone {{item.phone}}</span>
-                  </span>
+                  </span> -->
+                 <span class="item-name">
+                  <img ng-repeat="i in item.rating track by $index" ng-src="{{i}}">
+<!--                   <ul id="navlist">
+                   <li ng-repeat="i in item.rating track by $index">wat
+                      <img ng-src="{{i}}"> 
+                   </li>
+                  </ul> -->
                 </span>
               </md-item-template>
               <md-not-found>

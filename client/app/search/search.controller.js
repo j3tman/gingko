@@ -21,6 +21,25 @@
     self.attendees = [1,2,3,4,5,6,7,8,9];
     self.selectedItem = undefined;
 
+    self.makeStarArr = function(rating) {
+      var fullStarPath = '../../styles/star.png'
+      var halfStarPath = '../../styles/star-half.png'
+      var emptyStarPath = '../../styles/star-empty.png';
+
+      var starArr = [emptyStarPath, emptyStarPath, 
+        emptyStarPath, emptyStarPath, emptyStarPath];
+      var i = 0;
+      while (i < rating) {
+        if (i + .5 === rating) {
+          starArr[i]  = halfStarPath;
+        } else {
+          starArr[i] = fullStarPath;
+        }
+        i++;
+      }
+      return starArr;
+    }
+
     self.querySearch = function(query) {
       var path = '/api/out/yelp';
 
@@ -35,7 +54,7 @@
           _.each(self.iteratee, function(item) {
             if (!item.is_closed && item.rating && item.name && item.url && item.categories && item.phone && item.location) {
               self.data.push({
-                'rating': item.rating,
+                'rating': self.makeStarArr(item.rating),
                 'name': item.name,
                 'url': item.url,
                 'categories': item.categories,
@@ -54,6 +73,7 @@
           console.log('Error during querySearch.');
         })
         .then(function(response) {
+          console.log(self.data);
           return self.data;
         })
 
